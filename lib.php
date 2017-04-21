@@ -533,13 +533,14 @@ function wwassignment_update_dirty_sets() {  // update grades for all instances 
      TODO: get_logs is deprecated, migrate it
     $counter = 0;
 	$logRecords = get_logs("l.module LIKE \"wwassignment\" AND l.time >$lastcron ", null, "l.time ASC", $counter);
-	$wwmodtimes=array();
-	foreach ($logRecords as $record) {     
+	foreach ($logRecords as $record) {
   	  $wwmodtimes[$wwid =$record->info] = $record->time;
 	}
 	*/
+    $wwmodtimes=array();
 
-	// Create an array with the wwid values
+
+    // Create an array with the wwid values
 	$idValues= implode(",", array_keys($wwmodtimes) );
         list($usql,$params) = $DB->get_in_or_equal($idValues);
 
